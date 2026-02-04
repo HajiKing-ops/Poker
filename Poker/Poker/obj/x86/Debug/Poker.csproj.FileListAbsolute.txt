@@ -1,0 +1,102 @@
+C:\Gimenez\C#\Poker\Poker\bin\Debug\Poker.exe
+C:\Gimenez\C#\Poker\Poker\bin\Debug\Poker.pdb
+C:\Gimenez\C#\Poker\Poker\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Gimenez\C#\Poker\Poker\obj\x86\Debug\Poker.exe
+C:\Gimenez\C#\Poker\Poker\obj\x86\Debug\Poker.pdb
+D:\Henri\BTS\S3\Algorithmique et Langages\Langage C#\2. Codes\1ère année\5. Projets\Poker\Poker\obj\x86\Debug\Poker.exe
+D:\Henri\BTS\S3\Algorithmique et Langages\Langage C#\2. Codes\1ère année\5. Projets\Poker\Poker\obj\x86\Debug\Poker.pdb
+D:\Henri\BTS\S3\Algorithmique et Langages\Langage C#\2. Codes\1ère année\5. Projets\Poker\Poker\bin\Debug\Poker.exe
+D:\Henri\BTS\S3\Algorithmique et Langages\Langage C#\2. Codes\1ère année\5. Projets\Poker\Poker\bin\Debug\Poker.pdb
+D:\Henri\BTS\S3\Algorithmique et Langages\Langage C#\2. Codes\1ère année\5. Projets\Poker\Poker\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\Henri\BTS\S3\Algorithmique et Langages\Langage C#\2. Codes\1ère année\Procédural\2. Projets\Poker\Poker\obj\x86\Debug\Poker.exe
+D:\Henri\BTS\S3\Algorithmique et Langages\Langage C#\2. Codes\1ère année\Procédural\2. Projets\Poker\Poker\obj\x86\Debug\Poker.pdb
+S:\Henri\BTS SIO\Développement\C#\1. Console\c. Ateliers\Poker\Poker\obj\x86\Debug\Poker.exe
+S:\Henri\BTS SIO\Développement\C#\1. Console\c. Ateliers\Poker\Poker\obj\x86\Debug\Poker.pdb
+S:\Henri\BTS SIO\Développement\C#\1. Console\c. Ateliers\Poker\Poker\bin\Debug\Poker.exe
+S:\Henri\BTS SIO\Développement\C#\1. Console\c. Ateliers\Poker\Poker\bin\Debug\Poker.pdb
+S:\Henri\BTS SIO\Développement\C#\1. Console\c. Ateliers\Poker\Poker\obj\x86\Debug\ResolveAssemblyReference.cache
+S:\Henri\BTS SIO\Développement\C#\1. Console\d. Ateliers faussés\Poker\Poker\obj\x86\Debug\Poker.exe
+S:\Henri\BTS SIO\Développement\C#\1. Console\d. Ateliers faussés\Poker\Poker\obj\x86\Debug\Poker.pdb
+S:\Henri\BTS SIO\Développement\C#\1. Console\d. Ateliers faussés\Poker\Poker\bin\Debug\Poker.exe
+S:\Henri\BTS SIO\Développement\C#\1. Console\d. Ateliers faussés\Poker\Poker\bin\Debug\Poker.pdb
+S:\Henri\BTS SIO\Développement\C#\1. Console\d. Ateliers faussés\Poker\Poker\obj\x86\Debug\ResolveAssemblyReference.cache
+S:\Henri\BTS SIO - 01\Administratif\3. Promos\2011-2012\PPE\1. Jeux\1. Jeux faussés\Poker\Poker\obj\x86\Debug\Poker.exe
+S:\Henri\BTS SIO - 01\Administratif\3. Promos\2011-2012\PPE\1. Jeux\1. Jeux faussés\Poker\Poker\obj\x86\Debug\Poker.pdb
+S:\Henri\BTS SIO - 01\Administratif\3. Promos\2011-2012\PPE\1. Jeux\1. Jeux faussés\Poker\Poker\bin\Debug\Poker.exe
+S:\Henri\BTS SIO - 01\Administratif\3. Promos\2011-2012\PPE\1. Jeux\1. Jeux faussés\Poker\Poker\bin\Debug\Poker.pdb
+S:\Henri\BTS SIO - 01\Administratif\3. Promos\2011-2012\PPE\1. Jeux\1. Jeux faussés\Poker\Poker\obj\x86\Debug\ResolveAssemblyReference.cache
+S:\Henri\BTS SIO\Administratif\4. PPE\1. Jeux\1. Jeux faussés\Poker\Poker\obj\x86\Debug\Poker.exe
+S:\Henri\BTS SIO\Administratif\4. PPE\1. Jeux\1. Jeux faussés\Poker\Poker\obj\x86\Debug\Poker.pdb
+S:\Henri\BTS SIO\Administratif\4. PPE\1. Jeux\1. Jeux faussés\Poker\Poker\bin\Debug\Poker.exe
+S:\Henri\BTS SIO\Administratif\4. PPE\1. Jeux\1. Jeux faussés\Poker\Poker\bin\Debug\Poker.pdb
+S:\Henri\BTS SIO\Administratif\4. PPE\1. Jeux\1. Jeux faussés\Poker\Poker\obj\x86\Debug\ResolveAssemblyReference.cache
+S:\Henri\BTS SIO\Promos\02\PPE\PPE02\1. Jeux\1. Jeux faussés\Poker\Poker\obj\x86\Debug\Poker.exe
+S:\Henri\BTS SIO\Promos\02\PPE\PPE02\1. Jeux\1. Jeux faussés\Poker\Poker\obj\x86\Debug\Poker.pdb
+S:\Henri\BTS SIO\Promos\02\PPE\PPE02\1. Jeux\1. Jeux faussés\Poker\Poker\bin\Debug\Poker.exe
+S:\Henri\BTS SIO\Promos\02\PPE\PPE02\1. Jeux\1. Jeux faussés\Poker\Poker\bin\Debug\Poker.pdb
+S:\Henri\Travail\PPE\PPE02\1. Jeux CE HsH\1. FAUSSES\Poker\Poker\obj\x86\Debug\Poker.exe
+S:\Henri\Travail\PPE\PPE02\1. Jeux CE HsH\1. FAUSSES\Poker\Poker\obj\x86\Debug\Poker.pdb
+S:\Henri\Travail\PPE\PPE02\1. Jeux CE HsH\1. FAUSSES\Poker\Poker\bin\Debug\Poker.exe
+S:\Henri\Travail\PPE\PPE02\1. Jeux CE HsH\1. FAUSSES\Poker\Poker\bin\Debug\Poker.pdb
+S:\Henri\Travail\PPE\PPE02\1. Jeux CE HsH\1. FAUSSES\Poker\Poker\obj\x86\Debug\Poker.csprojResolveAssemblyReference.cache
+C:\Users\Utilisateur\Documents\PPE\PPE2\PPE2 - GIMENEZ\Poker\Poker\obj\x86\Debug\Poker.exe
+C:\Users\Utilisateur\Documents\PPE\PPE2\PPE2 - GIMENEZ\Poker\Poker\obj\x86\Debug\Poker.pdb
+C:\Users\Utilisateur\Documents\PPE\PokerCorr\Poker\obj\x86\Debug\Poker.exe
+C:\Users\Utilisateur\Documents\PPE\PokerCorr\Poker\obj\x86\Debug\Poker.pdb
+C:\Users\Utilisateur\Documents\PPE\PokerCorr\Poker\bin\Debug\Poker.exe
+C:\Users\Utilisateur\Documents\PPE\PokerCorr\Poker\bin\Debug\Poker.pdb
+C:\Users\Utilisateur\Documents\PPE\PokerCorr\Poker\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Utilisateur\Documents\PPE\PokerCorr - Copie\Poker\obj\x86\Debug\Poker.exe
+C:\Users\Utilisateur\Documents\PPE\PokerCorr - Copie\Poker\obj\x86\Debug\Poker.pdb
+C:\Users\Utilisateur\Documents\PPE\PokerCorr - Copie\Poker\bin\Debug\Poker.exe
+C:\Users\Utilisateur\Documents\PPE\PokerCorr - Copie\Poker\bin\Debug\Poker.pdb
+C:\Users\Utilisateur\Documents\PPE\PokerCorr - Copie\Poker\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\PokerCorr - Copie\Poker\obj\x86\Debug\Poker.exe
+E:\PokerCorr - Copie\Poker\obj\x86\Debug\Poker.pdb
+E:\PokerCorr - Copie\Poker\bin\Debug\Poker.exe
+E:\PokerCorr - Copie\Poker\bin\Debug\Poker.pdb
+E:\PokerCorr - Copie\Poker\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Utilisateur\Desktop\PokerCorr - Copie\Poker\obj\x86\Debug\Poker.exe
+C:\Users\Utilisateur\Desktop\PokerCorr - Copie\Poker\obj\x86\Debug\Poker.pdb
+C:\Users\Utilisateur\Desktop\PokerCorr - Copie\Poker\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Utilisateur\Desktop\PokerCorr - Copie\Poker\bin\Debug\Poker.exe
+C:\Users\Utilisateur\Desktop\PokerCorr - Copie\Poker\bin\Debug\Poker.pdb
+E:\Bts\Informatique\Mission\Projet  correction Jeux\PokerCorr - Copie\Poker\obj\x86\Debug\Poker.exe
+E:\Bts\Informatique\Mission\Projet  correction Jeux\PokerCorr - Copie\Poker\obj\x86\Debug\Poker.pdb
+E:\Bts\Informatique\Mission\Projet  correction Jeux\PokerCorr - Copie\Poker\bin\Debug\Poker.exe
+E:\Bts\Informatique\Mission\Projet  correction Jeux\PokerCorr - Copie\Poker\bin\Debug\Poker.pdb
+E:\Bts\Informatique\Mission\Projet  correction Jeux\PokerCorr - Copie\Poker\obj\x86\Debug\Poker.csprojAssemblyReference.cache
+E:\Bts\Informatique\Mission\Projet  correction Jeux\PokerCorr - Copie\Poker\obj\x86\Debug\Poker.csproj.CoreCompileInputs.cache
+D:\BTS SIO\Bts\1ere Année\Informatique\Mission\Projet  correction Jeux\PokerCorr - Copie\Poker\bin\Debug\Poker.exe
+D:\BTS SIO\Bts\1ere Année\Informatique\Mission\Projet  correction Jeux\PokerCorr - Copie\Poker\bin\Debug\Poker.pdb
+D:\BTS SIO\Bts\1ere Année\Informatique\Mission\Projet  correction Jeux\PokerCorr - Copie\Poker\obj\x86\Debug\Poker.csproj.AssemblyReference.cache
+D:\BTS SIO\Bts\1ere Année\Informatique\Mission\Projet  correction Jeux\PokerCorr - Copie\Poker\obj\x86\Debug\Poker.csproj.CoreCompileInputs.cache
+D:\BTS SIO\Bts\1ere Année\Informatique\Mission\Projet  correction Jeux\PokerCorr - Copie\Poker\obj\x86\Debug\Poker.exe
+D:\BTS SIO\Bts\1ere Année\Informatique\Mission\Projet  correction Jeux\PokerCorr - Copie\Poker\obj\x86\Debug\Poker.pdb
+D:\Autre\Bts\1ere Année\Informatique\Mission\Projet  correction Jeux\PokerCorr - Copie\Poker\bin\Debug\Poker.exe.config
+D:\Autre\Bts\1ere Année\Informatique\Mission\Projet  correction Jeux\PokerCorr - Copie\Poker\bin\Debug\Poker.exe
+D:\Autre\Bts\1ere Année\Informatique\Mission\Projet  correction Jeux\PokerCorr - Copie\Poker\bin\Debug\Poker.pdb
+D:\Autre\Bts\1ere Année\Informatique\Mission\Projet  correction Jeux\PokerCorr - Copie\Poker\obj\x86\Debug\Poker.csproj.AssemblyReference.cache
+D:\Autre\Bts\1ere Année\Informatique\Mission\Projet  correction Jeux\PokerCorr - Copie\Poker\obj\x86\Debug\Poker.csproj.CoreCompileInputs.cache
+D:\Autre\Bts\1ere Année\Informatique\Mission\Projet  correction Jeux\PokerCorr - Copie\Poker\obj\x86\Debug\Poker.exe
+D:\Autre\Bts\1ere Année\Informatique\Mission\Projet  correction Jeux\PokerCorr - Copie\Poker\obj\x86\Debug\Poker.pdb
+D:\Autre\Bts\1ere Année\Informatique\Mission\Projet  correction Jeux\PokerCorr - Copie\Poker\obj\x86\Debug\Poker.exe.config
+C:\Users\btssio\Desktop\PokerCorr - Copie\Poker\obj\x86\Debug\Poker.csproj.AssemblyReference.cache
+C:\Users\btssio\Desktop\PokerCorr - Copie\Poker\obj\x86\Debug\Poker.exe.config
+C:\Users\btssio\Desktop\PokerCorr - Copie\Poker\obj\x86\Debug\Poker.csproj.CoreCompileInputs.cache
+C:\Users\btssio\Desktop\PokerCorr - Copie\Poker\obj\x86\Debug\Poker.exe
+C:\Users\btssio\Desktop\PokerCorr - Copie\Poker\obj\x86\Debug\Poker.pdb
+C:\Users\btssio\Desktop\PokerCorr - Copie\Poker\bin\Debug\Poker.exe.config
+C:\Users\btssio\Desktop\PokerCorr - Copie\Poker\bin\Debug\Poker.exe
+C:\Users\btssio\Desktop\PokerCorr - Copie\Poker\bin\Debug\Poker.pdb
+D:\PokerCorr - Copie\Poker\obj\x86\Debug\Poker.csproj.AssemblyReference.cache
+D:\PokerCorr - Copie\Poker\obj\x86\Debug\Poker.exe.config
+D:\PokerCorr - Copie\Poker\obj\x86\Debug\Poker.csproj.CoreCompileInputs.cache
+C:\Users\r.salamzada\Desktop\Ap Slam\Poker\Poker\obj\x86\Debug\Poker.csproj.AssemblyReference.cache
+C:\Users\r.salamzada\Desktop\Ap Slam\Poker\Poker\obj\x86\Debug\Poker.exe.config
+C:\Users\r.salamzada\Desktop\Ap Slam\Poker\Poker\obj\x86\Debug\Poker.csproj.CoreCompileInputs.cache
+C:\Users\r.salamzada\Desktop\Ap Slam\Poker\Poker\bin\Debug\Poker.exe.config
+C:\Users\r.salamzada\Desktop\Ap Slam\Poker\Poker\bin\Debug\Poker.exe
+C:\Users\r.salamzada\Desktop\Ap Slam\Poker\Poker\bin\Debug\Poker.pdb
+C:\Users\r.salamzada\Desktop\Ap Slam\Poker\Poker\obj\x86\Debug\Poker.exe
+C:\Users\r.salamzada\Desktop\Ap Slam\Poker\Poker\obj\x86\Debug\Poker.pdb
