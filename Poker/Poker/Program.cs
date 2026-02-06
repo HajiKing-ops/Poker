@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Data.SqlTypes;
 using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -11,6 +13,8 @@ namespace Poker
 {
     class Program
     {
+        static readonly Random rand = new Random();
+
         // -----------------------
         // DECLARATION DES DONNEES
         // -----------------------
@@ -74,14 +78,14 @@ namespace Poker
         {
             carte uneCarte = new carte(); // Need to instantiate the carte object
 
-            Random rand = new Random();
-            int valeur = rand.Next(0, 13);
-            int famille = rand.Next(0, 4);  
-            uneCarte.valeur = valeurs[valeur];
-            uneCarte.famille = familles[famille];  // Assign the values from arrays to the carte object's properties
+
+            int v = rand.Next(0, 13);
+            int f = rand.Next(0, 4);
+            uneCarte.valeur = valeurs[v];
+            uneCarte.famille = familles[f];  // Assign the values from arrays to the carte object's properties
             return uneCarte;
         }
-       
+
         // Indique si une carte est déjà présente dans le jeu
         // Paramètres : une carte, le jeu 5 cartes, le numéro de la carte dans le jeu
         // Retourne un entier (booléen)
@@ -89,8 +93,11 @@ namespace Poker
         {
             for (int i = 0; i < 5; i++)
             {
-                if (uneCarte.valeur == unJeu[i].valeur && uneCarte.famille == unJeu[i].famille) /// i create a loop that compare the cards 
-                { return false; }
+                if (i == numero) continue;
+                {
+                    if (uneCarte.valeur == unJeu[i].valeur && uneCarte.famille == unJeu[i].famille) /// i create a loop that compare the cards 
+                    { return false; }
+                }
             }
             return true;
         }
@@ -108,6 +115,10 @@ namespace Poker
             combinaison comb = combinaison.RIEN;   // i create a list of combinastion that i had in the begining of the code so i create it here so i can use it and i give rien if the card did not much the code it return rien
             //combinaison combine = new combinaison();
             int compteur = 0;
+            bool hasbrelan = false;
+            bool haspaire = false;
+            bool toutmemefam = true;
+
             for (i = 0; i < 5; i++)
             {
                 for (j = 0; j < 5; j++) // pour list simple on peut mettre length 
@@ -116,26 +127,44 @@ namespace Poker
                     if (unJeu[i].valeur == unJeu[j].valeur)
                     {
                         similaire[i] += 1;
+
+
                     }
-                    if (similaire[i] == 2)
-                    {
-                        compteur+=1;
-                         comb = combinaison.PAIRE; // in here i store the the the value of the combinasion and i ddi not retun bcz it will stop the code and wont check the rest 
-                    }
-                    if (compteur / 2 == 2) /// i did this to find the double paire  {1, 4, 4, 4, 4} = 2 paire si on fait ca /2
-                    { comb =  combinaison.DOUBLE_PAIRE; } // we had list of combinasion at the top so and i call combinasion and the value in it 
-                    if (similaire[i] == 4)
-                    { comb = combinaison.CARRE;} // si il y a un elemenet qui aparait 4 fois il va affiche ca 
-                    if (similaire[i] == 3)
-                    { comb =  combinaison.BRELAN; }
-                    if (similaire[i] == 3 && similaire[i] == 2)
-                    { comb =  combinaison.FULL; }
                     if (unJeu[i].famille == unJeu[j].famille)
                     { compt += 1; }
-                    if (compt == 5)
-                    { comb =  combinaison.COULEUR; }
-                } 
+
+                }
+                if (similaire[i] == 2)
+                {
+                    compteur += 1;
+                    comb = combinaison.PAIRE; // in here i store the the the value of the combinasion and i ddi not retun bcz it will stop the code and wont check the rest 
+                }
+                if (compteur / 2 == 2) /// i did this to find the double paire  {1, 4, 4, 4, 4} = 2 paire si on fait ca /2
+                { comb = combinaison.DOUBLE_PAIRE; } // we had list of combinasion at the top so and i call combinasion and the value in it 
+                if (similaire[i] == 4)
+                { comb = combinaison.CARRE; } // si il y a un elemenet qui aparait 4 fois il va affiche ca 
+                if (similaire[i] == 3)
+                { comb = combinaison.BRELAN; }
+                //if (similaire[i] == 3 && similaire[i] == 2)
+                //{ comb =  combinaison.FULL; }
+
+                if (similaire[i] == 3)
+                    hasbrelan = true;
+                if (similaire[i] == 2)
+                    haspaire = true;
+
             }
+
+            for (int k = 1; k < 5; k++)
+            {
+                if (unJeu[k].famille != unJeu[0].famille)
+                    toutmemefam = false;
+            }
+            if (hasbrelan && haspaire)
+                comb = combinaison.FULL;
+            if (toutmemefam)
+                comb = combinaison.COULEUR;
+
 
 
             char[,] quintes =
@@ -145,26 +174,37 @@ namespace Poker
                 { '8','9','X','V','D'},
                 { '7','8','9','X','V'}
             };
-            int g = similaire.Sum();
-            int comp = 0;
-            if (g == 5)
-            {
-                for (i = 0; i < quintes.GetLength(0); i++)
-                {
-                    for (j = 0; j < quintes.GetLength(1); j++)
-                    {
-                        if (unJeu[i].valeur == quintes[i, j]) // unjeu[i] correspond du liste le quintes[i] correspond premiere liste dans le liste le j correspond le indice dans le liste
-                        {
-                            comp = +1;
-                            if (comp == 5)
-                                comb = combinaison.QUINTE;
-                            if (unJeu[i].famille == unJeu[j].famille)
-                                comb = combinaison.QUINTE_FLUSH;
+            bool isquint = false;
+            bool isquintflush = false;
 
+            for (i = 0; i < quintes.GetLength(0); i++)
+            {
+                int matchcount = 0;
+                for (j = 0; j < 5; j++)
+                {
+                    for (int k = 0; k < 5; k++)
+                    {
+                        if (unJeu[j].valeur == quintes[i, k]) // unjeu[i] correspond du liste le quintes[i] correspond premiere liste dans le liste le j correspond le indice dans le liste
+                        {
+                            matchcount++;
+                            break; // trouve et  passez au souvent 
                         }
                     }
                 }
+                if (matchcount == 5)
+                {
+                    isquint = true;
+                    if (toutmemefam)
+                    {
+                        isquintflush = true;
+                    }
+                    break;
+                }
             }
+            if (isquintflush)
+                comb = combinaison.QUINTE_FLUSH;
+            else if (isquint)
+                comb = combinaison.QUINTE;
             return comb;
         }
 
@@ -174,12 +214,14 @@ namespace Poker
         {
 
 
-        for (int i = 0; i < e.Length; i++)
-             {
-                 unJeu[e[i]] = tirage();// 
-             }
-           
-         
+            for (int i = 0; i < e.Length; i++)
+            {
+                int g = e[i];
+                do
+                {
+                    unJeu[g] = tirage();
+                } while (!carteUnique(unJeu[e[i]], unJeu, g));
+            }
         }
 
         // Tirage d'un jeu de 5 cartes
@@ -187,13 +229,13 @@ namespace Poker
         private static void tirageDuJeu(ref carte[] unJeu)
         {
 
-        for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 5; i++)
             {
                 do
                 {
-                    unJeu[i] = tirage(); 
+                    unJeu[i] = tirage();
                 }
-                while (!carteUnique(unJeu [i], unJeu, i));
+                while (!carteUnique(unJeu[i], unJeu, i));
             }
 
         }
@@ -246,7 +288,7 @@ namespace Poker
 
         }
 
-        //--------------------
+        //--------------------`
         // Fonction PRINCIPALE
         //--------------------
         static void Main(string[] args)
@@ -340,48 +382,59 @@ namespace Poker
                                 Console.WriteLine("un carre; champion!"); break;
                             case combinaison.QUINTE_FLUSH:
                                 Console.WriteLine("une quinte-flush; royal!"); break;
-                        };
+                        }
+                        ;
                     }
                     catch { }
                     Console.ReadKey();
                     char enregister = ' ';
                     string nom = "";
-                    BinaryWriter f;
+                    //BinaryWriter f;
                     SetConsoleTextAttribute(hConsole, 014);
                     Console.Write("Enregistrer le Jeu ? (O/N) : ");
-                    enregister = char.Parse(Console.ReadLine());
-                    enregister = Char.ToUpper(enregister);
+                    try
+                    {
+                        enregister = char.Parse(Console.ReadLine());
+                        enregister = Char.ToUpper(enregister);
+                    }
+                    catch (Exception e) { Console.WriteLine(e.Message); }
+
 
                     if (enregister == 'O')
                     {
-                        const string fileName = "scores.txt";
+                        //const string fileName = "scores.txt";
                         Console.WriteLine("Vous pouvez saisir votre nom (ou pseudo) : ");
                         nom = Console.ReadLine();
-                        using (f = new BinaryWriter(new FileStream("scores.txt", FileMode.Append, FileAccess.Write)))
+                        using (StreamWriter f = new StreamWriter("scores.txt", true))
                         {
-
+                            f.WriteLine(nom + " _ " + Cherche_combinaison(ref MonJeu).ToString());
                         }
-
+                        Console.WriteLine("Score enregistre!");
+                        Console.ReadKey();
                     }
 
                 }
-               if(reponse == "2")
+                if (reponse == "2")
                 {
-                    string articles;
-                    char[] délimiteurs = { ';' };
-                    carte UneCarte;
-                    string nom;
                     if (File.Exists("scores.txt"))
                     {
-                        using (BinaryReader f = new BinaryReader(new FileStream("scores.txt", FileMode.Open, FileAccess.Read)))
+                        SetConsoleTextAttribute(hConsole, 014);
+                        Console.WriteLine("========SCORES======\n");
+
+                        string[] lines = File.ReadAllLines("scores.txt");
+                        foreach (string line in lines)
                         {
-      
-
+                            Console.WriteLine(line);
                         }
-
-                        Console.WriteLine("Nom : " );
+                        Console.WriteLine("\n APPuyez sur une touche ");
                         Console.ReadKey();
                     }
+                    else
+                    {
+                        Console.WriteLine("Ps de score enregistre : ");
+                        Console.ReadKey();
+                    }
+
                 }
 
                 if (reponse == "3")
