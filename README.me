@@ -1,0 +1,64 @@
+Poker
+=====
+
+Welcome! This is a small, friendly C# console Poker application created by Roman Salamzada.
+
+- **Language:** C#
+- **Framework:** .NET Framework 4.8
+
+Overview
+--------
+
+This project is a simple console-based Poker game. It demonstrates basic game flow (deal, player decisions, hand evaluation) and a tiny persistence layer for storing player scores. The main program and game logic live in `Poker/Program.cs`.
+
+Author
+------
+
+Roman Salamzada
+
+How the code works (high-level)
+------------------------------
+
+- `Program.cs` starts the application and runs the main game loop.
+- The game deals cards, accepts player input, evaluates hands, and determines the winner each round.
+- After rounds complete, the application records scores and persists them to a simple text file.
+- Saving / loading of scores uses small helper methods for serialization and deserialization.
+
+Encryption / Decryption (Caesar cipher)
+--------------------------------------
+
+To keep stored scores unobvious in `scores.txt`, the project uses a simple Caesar cipher for encryption and decryption. A Caesar cipher shifts each character by a fixed offset; for example, shifting by 3 turns `A` into `D`. In this project that mechanism is used when writing scores to disk and when reading them back.
+
+Key points:
+- The cipher implementation is intentionally simple and not secure for sensitive data.
+- The shift amount is configurable in code (see the encrypt/decrypt helper functions in `Program.cs`).
+- Encryption runs when saving scores; decryption runs when loading them.
+
+Getting started
+----------------
+
+1. Requirements: Windows and Visual Studio (2019/2022) with the .NET desktop development workload, or MSBuild tools.
+2. Open the solution: [Poker.sln](Poker.sln) and build the solution.
+
+Build from Developer Command Prompt (example):
+
+```
+msbuild Poker.sln /p:Configuration=Debug
+```
+
+Run
+---
+
+- After building, run the executable at Poker/Poker/bin/Debug/Poker.exe
+- Or run the project directly from Visual Studio (F5 or Ctrl+F5).
+
+Data
+----
+
+- Scores are persisted to Poker/Poker/bin/Debug/scores.txt (encrypted with the simple Caesar cipher).
+
+Notes & Contributing
+--------------------
+
+- This is a learning/demo project — feel free to explore `Poker/Program.cs` to see how the game loop, scoring, and encryption are implemented.
+- Contributions, improvements, and bug reports are welcome.
