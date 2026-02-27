@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Data.SqlTypes;
 using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Eventing.Reader;
+using System.Diagnostics.Tracing;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -89,11 +90,11 @@ namespace Poker
         // Indique si une carte est déjà présente dans le jeu
         // Paramètres : une carte, le jeu 5 cartes, le numéro de la carte dans le jeu
         // Retourne un entier (booléen)
-        public static bool carteUnique(carte uneCarte, carte[] unJeu, int numero)
+        public static bool carteUnique(carte uneCarte, carte[] unJeu, int numero) // -> i is passed as numero i from tiragedujeu so it pass the value
         {
             for (int i = 0; i < 5; i++)
             {
-                if (i == numero) continue;
+                if (i == numero) continue;// skip the rest of the loop iteration and jump to the next i we dont want to compare the card with itself
                 {
                     if (uneCarte.valeur == unJeu[i].valeur && uneCarte.famille == unJeu[i].famille) /// i create a loop that compare the cards 
                     { return false; }
@@ -172,7 +173,7 @@ namespace Poker
                 { 'X','V','D','R','A'},
                 { '9','X','V','D','R'},
                 { '8','9','X','V','D'},
-                { '7','8','9','X','V'}
+                { '7','8','9','X','V'} // we have 9 possibilites check 
             };
             bool isquint = false;
             bool isquintflush = false;
@@ -184,10 +185,10 @@ namespace Poker
                 {
                     for (int k = 0; k < 5; k++)
                     {
-                        if (unJeu[j].valeur == quintes[i, k]) // unjeu[i] correspond du liste le quintes[i] correspond premiere liste dans le liste le j correspond le indice dans le liste
+                        if (unJeu[j].valeur == quintes[i, k]) // unjeu is my hands card, and 2D array you use two indexes (row, column)
                         {
                             matchcount++;
-                            break; // trouve et  passez au souvent 
+                            break; //match found break k loop automatically j increment to 1 ... 
                         }
                     }
                 }
@@ -253,7 +254,8 @@ namespace Poker
                 // Tirage de la carte n°i (le jeu doit être sans doublons !)
 
                 // Affichage de la carte
-                if (MonJeu[i].famille == '\u2665' || MonJeu[i].famille == '\u2666')
+                // the suite is heart or diamond the color is red on white background else black on the white background 
+                if (MonJeu[i].famille == '\u2665' || MonJeu[i].famille == '\u2666')    // \u2666 are unicode characters -> heart,diamond so it the symbol 
                     SetConsoleTextAttribute(hConsole, 252);
                 else
                     SetConsoleTextAttribute(hConsole, 240);
@@ -288,6 +290,30 @@ namespace Poker
 
         }
 
+
+
+
+
+        public static string Encrypt(string text)
+        {
+            string res ="";
+
+            for (int i = 0; i < text.Length; i++) 
+            {
+                res += (char)(text[i] + 3);
+            }
+            return res;
+        }
+        public static string Decrypt(string text)
+        {
+            string res = "";
+
+            for (int i = 0; i < text.Length; i++)
+            {
+                res += (char)(text[i] - 3);
+            }
+            return res;
+        }
         //--------------------`
         // Fonction PRINCIPALE
         //--------------------
@@ -405,9 +431,44 @@ namespace Poker
                         //const string fileName = "scores.txt";
                         Console.WriteLine("Vous pouvez saisir votre nom (ou pseudo) : ");
                         nom = Console.ReadLine();
+                        string[] lines = new string[12];
+                        int c = 1;
+                        for (int j = 0; j < 5; j++)
+                        {
+                            lines[0] += string.Format("{0}{1}{2}{3}{4}{5}{6}{7}{8}{9}{10}   ", '*', '-', '-', '-', '-', '-', '-', '-', '-', '-', '*');
+                            lines[1] += string.Format("{0}{1}{2}{3}{4}{5}{6}{7}{8}{9}{10}   ", '|', (char)MonJeu[j].famille, ' ', (char)MonJeu[j].famille, ' ', (char)MonJeu[j].famille, ' ', (char)MonJeu[j].famille, ' ', (char)MonJeu[j].famille, '|');
+                            lines[2] += string.Format("{0}{1}{2}{3}{4}{5}{6}{7}{8}{9}{10}   ", '|', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '|');
+
+
+                            lines[3] += string.Format("{0}{1}{2}{3}{4}{5}{6}{7}{8}{9}{10}   ",
+                            '|', (char)MonJeu[j].famille, ' ', ' ', ' ', ' ', ' ', ' ', ' ', (char)MonJeu[j].famille, '|');
+
+
+                            lines[4] += string.Format("{0}{1}{2}{3}{4}{5}{6}{7}{8}{9}{10}   ", '|', ' ', ' ', ' ', ' ', (char)MonJeu[j].valeur, ' ', ' ', ' ', ' ', '|');
+
+                            lines[5] += string.Format("{0}{1}{2}{3}{4}{5}{6}{7}{8}{9}{10}   ", '|', (char)MonJeu[j].famille, ' ', ' ', ' ', (char)MonJeu[j].valeur, ' ', ' ', ' ', (char)MonJeu[j].famille, '|');
+
+                            lines[6] += string.Format("{0}{1}{2}{3}{4}{5}{6}{7}{8}{9}{10}   ", '|', ' ', ' ', ' ', ' ', (char)MonJeu[j].valeur, ' ', ' ', ' ', ' ', '|');
+
+                            lines[7] += string.Format("{0}{1}{2}{3}{4}{5}{6}{7}{8}{9}{10}   ",
+                          '|', (char)MonJeu[j].famille, ' ', ' ', ' ', ' ', ' ', ' ', ' ', (char)MonJeu[j].famille, '|');
+
+                            lines[8] += string.Format("{0}{1}{2}{3}{4}{5}{6}{7}{8}{9}{10}   ", '|', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '|');
+
+                            lines[9] += string.Format("{0}{1}{2}{3}{4}{5}{6}{7}{8}{9}{10}   ", '|', (char)MonJeu[j].famille, ' ', (char)MonJeu[j].famille, ' ', (char)MonJeu[j].famille, ' ', (char)MonJeu[j].famille, ' ', (char)MonJeu[j].famille, '|');
+                            lines[10] += string.Format("{0}{1}{2}{3}{4}{5}{6}{7}{8}{9}{10}   ", '*', '-', '-', '-', '-', '-', '-', '-', '-', '-', '*');
+                            lines[11] += string.Format("{0}{1}{2}{3}{4}{5}{6}{7}{8}{9}{10}   ", ' ', ' ', ' ', ' ', ' ', c, ' ', ' ', ' ', ' ', ' ');
+                            c++;
+                        }
+
                         using (StreamWriter f = new StreamWriter("scores.txt", true))
                         {
-                            f.WriteLine(nom + " _ " + Cherche_combinaison(ref MonJeu).ToString());
+                            f.WriteLine(Encrypt(nom + " _ " + Cherche_combinaison(ref MonJeu).ToString()));
+
+                            for (int h = 0; h < 12; h++)
+                            {
+                                f.WriteLine(Encrypt(lines[h]));
+                            }
                         }
                         Console.WriteLine("Score enregistre!");
                         Console.ReadKey();
@@ -424,7 +485,7 @@ namespace Poker
                         string[] lines = File.ReadAllLines("scores.txt");
                         foreach (string line in lines)
                         {
-                            Console.WriteLine(line);
+                            Console.WriteLine(Decrypt(line));
                         }
                         Console.WriteLine("\n APPuyez sur une touche ");
                         Console.ReadKey();
