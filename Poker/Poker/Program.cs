@@ -485,7 +485,20 @@ namespace Poker
                         string[] lines = File.ReadAllLines("scores.txt");
                         foreach (string line in lines)
                         {
-                            Console.WriteLine(Decrypt(line));
+                            string decrypted = Decrypt(line);
+                            for (int i = 0; i < decrypted.Length; i++)
+                            { 
+                                char c = decrypted[i];
+                                if (c == '♥' || c == '♦')
+                                    SetConsoleTextAttribute(hConsole, 252);
+                                else if (c== '♣' || c== '♠')
+                                    SetConsoleTextAttribute(hConsole, 240);
+                                else
+                                    SetConsoleTextAttribute(hConsole, 015); 
+                                Console.Write(c);
+                            }
+                            Console.WriteLine();//new line after each line 
+
                         }
                         Console.WriteLine("\n APPuyez sur une touche ");
                         Console.ReadKey();
