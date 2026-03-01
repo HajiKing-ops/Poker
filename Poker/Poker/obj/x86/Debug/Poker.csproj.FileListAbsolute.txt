@@ -116,3 +116,11 @@ C:\Users\Utilisateur\Desktop\Nouveau dossier (4)\Poker\Poker\Poker\obj\x86\Debug
 C:\Users\Utilisateur\Desktop\Nouveau dossier (4)\Poker\Poker\Poker\obj\x86\Debug\Poker.csproj.CoreCompileInputs.cache
 C:\Users\Utilisateur\Desktop\Nouveau dossier (4)\Poker\Poker\Poker\obj\x86\Debug\Poker.exe
 C:\Users\Utilisateur\Desktop\Nouveau dossier (4)\Poker\Poker\Poker\obj\x86\Debug\Poker.pdb
+C:\Users\Utilisateur\Desktop\Nouveau dossier (2)\Poker\Poker\Poker\bin\Debug\Poker.exe.config
+C:\Users\Utilisateur\Desktop\Nouveau dossier (2)\Poker\Poker\Poker\bin\Debug\Poker.exe
+C:\Users\Utilisateur\Desktop\Nouveau dossier (2)\Poker\Poker\Poker\bin\Debug\Poker.pdb
+C:\Users\Utilisateur\Desktop\Nouveau dossier (2)\Poker\Poker\Poker\obj\x86\Debug\Poker.csproj.AssemblyReference.cache
+C:\Users\Utilisateur\Desktop\Nouveau dossier (2)\Poker\Poker\Poker\obj\x86\Debug\Poker.exe.config
+C:\Users\Utilisateur\Desktop\Nouveau dossier (2)\Poker\Poker\Poker\obj\x86\Debug\Poker.csproj.CoreCompileInputs.cache
+C:\Users\Utilisateur\Desktop\Nouveau dossier (2)\Poker\Poker\Poker\obj\x86\Debug\Poker.exe
+C:\Users\Utilisateur\Desktop\Nouveau dossier (2)\Poker\Poker\Poker\obj\x86\Debug\Poker.pdb
