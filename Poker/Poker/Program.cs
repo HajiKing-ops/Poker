@@ -173,7 +173,12 @@ namespace Poker
                 { 'X','V','D','R','A'},
                 { '9','X','V','D','R'},
                 { '8','9','X','V','D'},
-                { '7','8','9','X','V'} // we have 9 possibilites check 
+                { '7','8','9','X','V'}, // we have 9 possibilites check 
+                { '6','7','8','9','X'},
+                { '5','6','7','8','9'},
+                { '4','5','6','7','8'},
+                { '3','4','5','6','7'},
+                { '2','3','4','5','6'}
             };
             bool isquint = false;
             bool isquintflush = false;
@@ -181,7 +186,7 @@ namespace Poker
             for (i = 0; i < quintes.GetLength(0); i++)
             {
                 int matchcount = 0;
-                for (j = 0; j < 5; j++)
+                for (j = 0; j < 5; j++) // in here we can use Getlength(1) also -> it adapts automatically ->0 = first dimension ->  1 = second dimension 
                 {
                     for (int k = 0; k < 5; k++)
                     {
