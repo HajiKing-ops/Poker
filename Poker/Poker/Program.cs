@@ -14,7 +14,7 @@ namespace Poker
 {
     class Program
     {
-        static readonly Random rand = new Random();
+        static readonly Random rand = new Random(); // global object so it can be used everywhere
 
         // -----------------------
         // DECLARATION DES DONNEES
@@ -77,7 +77,7 @@ namespace Poker
         // Retourne une expression de type "structure carte"
         public static carte tirage()
         {
-            carte uneCarte = new carte(); // Need to instantiate the carte object
+            carte uneCarte = new carte(); // / Initialise une carte vide avant affectation.
 
 
             int v = rand.Next(0, 13);
@@ -90,13 +90,13 @@ namespace Poker
         // Indique si une carte est déjà présente dans le jeu
         // Paramètres : une carte, le jeu 5 cartes, le numéro de la carte dans le jeu
         // Retourne un entier (booléen)
-        public static bool carteUnique(carte uneCarte, carte[] unJeu, int numero) // -> i is passed as numero i from tiragedujeu so it pass the value
+        public static bool carteUnique(carte uneCarte, carte[] unJeu, int numero)  // numero = index de la carte courante (on ne la compare pas à elle-même).
         {
             for (int i = 0; i < 5; i++)
             {
-                if (i == numero) continue;// skip the rest of the loop iteration and jump to the next i we dont want to compare the card with itself
+                if (i == numero) continue; // skip current iteration, we don't want to compare the card with itself
                 {
-                    if (uneCarte.valeur == unJeu[i].valeur && uneCarte.famille == unJeu[i].famille) /// i create a loop that compare the cards 
+                    if (uneCarte.valeur == unJeu[i].valeur && uneCarte.famille == unJeu[i].famille)
                     { return false; }
                 }
             }
@@ -113,7 +113,7 @@ namespace Poker
             int compt = 0;
             int[] similaire = { 0, 0, 0, 0, 0, };
 
-            combinaison comb = combinaison.RIEN;   // i create a list of combinastion that i had in the begining of the code so i create it here so i can use it and i give rien if the card did not much the code it return rien
+            combinaison comb = combinaison.RIEN;  // Valeur par défaut: aucune combinaison trouvée.
             //combinaison combine = new combinaison();
             int compteur = 0;
             bool hasbrelan = false;
@@ -138,7 +138,7 @@ namespace Poker
                 if (similaire[i] == 2)
                 {
                     compteur += 1;
-                    comb = combinaison.PAIRE; // in here i store the the the value of the combinasion and i ddi not retun bcz it will stop the code and wont check the rest 
+                    comb = combinaison.PAIRE; // On continue l’analyse: une meilleure combinaison peut exister.
                 }
                 if (compteur / 2 == 2) /// i did this to find the double paire  {1, 4, 4, 4, 4} = 2 paire si on fait ca /2
                 { comb = combinaison.DOUBLE_PAIRE; } // we had list of combinasion at the top so and i call combinasion and the value in it 
@@ -158,12 +158,12 @@ namespace Poker
 
             for (int k = 1; k < 5; k++)
             {
-                if (unJeu[k].famille != unJeu[0].famille)
-                    toutmemefam = false;
+                if (unJeu[k].famille != unJeu[0].famille) // if one card has a different suit, it's not a flush
+                    toutmemefam = false; // Dès qu'une carte diffère, ce n'est pas une couleur
             }
-            if (hasbrelan && haspaire)
+            if (hasbrelan && haspaire)  // FULL = brelan + paire dans le même jeu
                 comb = combinaison.FULL;
-            if (toutmemefam)
+            if (toutmemefam) // COULEUR = toutes les cartes ont la même famille
                 comb = combinaison.COULEUR;
 
 
@@ -173,12 +173,8 @@ namespace Poker
                 { 'X','V','D','R','A'},
                 { '9','X','V','D','R'},
                 { '8','9','X','V','D'},
-                { '7','8','9','X','V'}, // we have 9 possible straights 
+                { '7','8','9','X','V'}, 
                 { '6','7','8','9','X'},
-                { '5','6','7','8','9'},
-                { '4','5','6','7','8'},
-                { '3','4','5','6','7'},
-                { '2','3','4','5','6'},
             };
             bool isquint = false;
             bool isquintflush = false;
@@ -226,7 +222,7 @@ namespace Poker
                 do
                 {
                     unJeu[g] = tirage();
-                } while (!carteUnique(unJeu[e[i]], unJeu, g));
+                } while (!carteUnique(unJeu[e[i]], unJeu, g)); // passes 3 parameters to carteUnique to check for duplicates
             }
         }
 
@@ -241,25 +237,21 @@ namespace Poker
                 {
                     unJeu[i] = tirage();
                 }
-                while (!carteUnique(unJeu[i], unJeu, i));
+                while (!carteUnique(unJeu[i], unJeu, i)); // same logic as echangeCarte, retires until unique
             }
 
         }
-        // Affiche à l'écran une carte {valeur;famille} en fournisant la colonne de départ
         private static void affichageCarte(ref carte uneCarte)
         {
-            //----------------------------
-            // TIRAGE D'UN JEU DE 5 CARTES
-            //----------------------------
+
             int left = 0;
             int c = 1;
-            // Tirage aléatoire de 5 cartes
+
             for (int i = 0; i < 5; i++)
             {
-                // Tirage de la carte n°i (le jeu doit être sans doublons !)
 
                 // Affichage de la carte
-                // the suite is heart or diamond the color is red on white background else black on the white background 
+                // Coeur/Carreau en rouge, sinon noir (fond blanc).
                 if (MonJeu[i].famille == '\u2665' || MonJeu[i].famille == '\u2666')    // \u2666 are unicode characters -> heart,diamond so it the symbol 
                     SetConsoleTextAttribute(hConsole, 252);
                 else
@@ -289,7 +281,7 @@ namespace Poker
                 Console.SetCursorPosition(left, 16);
                 SetConsoleTextAttribute(hConsole, 10);
                 Console.Write("{0}{1}{2}{3}{4}{5}{6}{7}{8}{9}{10}\n", ' ', ' ', ' ', ' ', ' ', c, ' ', ' ', ' ', ' ', ' ');
-                left = left + 15;
+                left = left + 15; // Décale la position horizontale pour la prochaine carte
                 c++;
             }
 
@@ -305,9 +297,9 @@ namespace Poker
 
             for (int i = 0; i < text.Length; i++)
             {
-                res += (char)(text[i] + 3);
+                res += (char)(text[i] + 3); // Chiffrement César: décale chaque caractère de +3.
             }
-            return res;
+            return res; 
         }
         public static string Decrypt(string text)
         {
@@ -315,7 +307,7 @@ namespace Poker
 
             for (int i = 0; i < text.Length; i++)
             {
-                res += (char)(text[i] - 3);
+                res += (char)(text[i] - 3); // Chiffrement César: décale chaque caractère de -3.
             }
             return res;
         }
@@ -376,7 +368,7 @@ namespace Poker
                             Console.Write("Carte <1-5> : ");
 
                             e[j] = int.Parse(Console.ReadLine());
-                            e[j] -= 1;
+                            e[j] -= 1; // Convertit le numéro affiché (1-5) en index tableau (0-4)
                         }
 
                         echangeCarte(ref MonJeu, ref e);
@@ -426,17 +418,16 @@ namespace Poker
                     try
                     {
                         enregister = char.Parse(Console.ReadLine());
-                        enregister = Char.ToUpper(enregister);
+                        enregister = Char.ToUpper(enregister);  // Normalise en majuscule pour comparer avec 'O'
                     }
                     catch (Exception e) { Console.WriteLine(e.Message); }
 
 
-                    if (enregister == 'O')
+                    if (enregister == 'O') 
                     {
-                        //const string fileName = "scores.txt";
                         Console.WriteLine("Vous pouvez saisir votre nom (ou pseudo) : ");
                         nom = Console.ReadLine();
-                        string[] card = new string[5];
+                        string[] card = new string[5];  
                         for (int j = 0; j < 5; j++)
                         {
                             if (MonJeu[j].famille == '\u2665')
@@ -447,13 +438,13 @@ namespace Poker
                                 card[j] += "5," + MonJeu[j].valeur;
                             if (MonJeu[j].famille == '\u2660')
                                 card[j] += "6," + MonJeu[j].valeur;
-
-                        }
+ 
+                        }   // each card saved as family code,value
 
                         using (StreamWriter f = new StreamWriter("scores.txt", true))
                         {
-                            f.WriteLine(Encrypt(nom + " _ " + Cherche_combinaison(ref MonJeu).ToString()));
-                            f.WriteLine(Encrypt(string.Join(";", card)));
+                            f.WriteLine(Encrypt(nom + " _ " + Cherche_combinaison(ref MonJeu).ToString()));  // Écrit le nom + combinaison ET les cartes chiffrées dans scores.txt (mode ajout)
+                            f.WriteLine(Encrypt(string.Join(";", card)));  // joins all 5 cards with ';' separator
                         }
                         Console.WriteLine("Score enregistre!");
                         Console.ReadKey();
@@ -468,18 +459,18 @@ namespace Poker
                         Console.WriteLine("========SCORES======\n");
 
                         string[] lines = File.ReadAllLines("scores.txt");
-                        foreach (string line in lines)
+                        foreach (string line in lines) 
                         {
                             string decrypted = Decrypt(line);
-                            if (decrypted.Contains(","))
+                            if (decrypted.Contains(",")) // check if the line contains a comma (card data line)
                             {
-                                string[] parts = decrypted.Split(';');
+                                string[] parts = decrypted.Split(';'); // split into 5 cards using ';' as separator
                                 for (int i = 0; i < 5; i++)
                                 {
 
-                                    string[] cardData = parts[i].Split(',');
+                                    string[] cardData = parts[i].Split(','); // split each card into family code and value
 
-                                    MonJeu[i].valeur = char.Parse(cardData[1]);
+                                    MonJeu[i].valeur = char.Parse(cardData[1]); // store the card value
 
                                     if (cardData[0] == "3")
                                         MonJeu[i].famille = '\u2665';
