@@ -183,7 +183,7 @@ namespace Poker
             bool isquint = false;
             bool isquintflush = false;
 
-            for (i = 0; i < quintes.GetLength(0); i++) 
+            for (i = 0; i < quintes.GetLength(0); i++)
             {
                 int matchcount = 0;
                 for (j = 0; j < 5; j++) //  you can use Getlength(1) here instead of 5, -> 0 = first dimension, 1 -> second dimension, it adapts automatically 
@@ -301,9 +301,9 @@ namespace Poker
 
         public static string Encrypt(string text)
         {
-            string res ="";
+            string res = "";
 
-            for (int i = 0; i < text.Length; i++) 
+            for (int i = 0; i < text.Length; i++)
             {
                 res += (char)(text[i] + 3);
             }
@@ -436,44 +436,24 @@ namespace Poker
                         //const string fileName = "scores.txt";
                         Console.WriteLine("Vous pouvez saisir votre nom (ou pseudo) : ");
                         nom = Console.ReadLine();
-                        string[] lines = new string[12];
-                        int c = 1;
+                        string[] card = new string[5];
                         for (int j = 0; j < 5; j++)
                         {
-                            lines[0] += string.Format("{0}{1}{2}{3}{4}{5}{6}{7}{8}{9}{10}   ", '*', '-', '-', '-', '-', '-', '-', '-', '-', '-', '*');
-                            lines[1] += string.Format("{0}{1}{2}{3}{4}{5}{6}{7}{8}{9}{10}   ", '|', (char)MonJeu[j].famille, ' ', (char)MonJeu[j].famille, ' ', (char)MonJeu[j].famille, ' ', (char)MonJeu[j].famille, ' ', (char)MonJeu[j].famille, '|');
-                            lines[2] += string.Format("{0}{1}{2}{3}{4}{5}{6}{7}{8}{9}{10}   ", '|', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '|');
+                            if (MonJeu[j].famille == '\u2665')
+                                card[j] += "3," + MonJeu[j].valeur;
+                            if (MonJeu[j].famille == '\u2666')
+                                card[j] += "4," + MonJeu[j].valeur;
+                            if (MonJeu[j].famille == '\u2663')
+                                card[j] += "5," + MonJeu[j].valeur;
+                            if (MonJeu[j].famille == '\u2660')
+                                card[j] += "6," + MonJeu[j].valeur;
 
-
-                            lines[3] += string.Format("{0}{1}{2}{3}{4}{5}{6}{7}{8}{9}{10}   ",
-                            '|', (char)MonJeu[j].famille, ' ', ' ', ' ', ' ', ' ', ' ', ' ', (char)MonJeu[j].famille, '|');
-
-
-                            lines[4] += string.Format("{0}{1}{2}{3}{4}{5}{6}{7}{8}{9}{10}   ", '|', ' ', ' ', ' ', ' ', (char)MonJeu[j].valeur, ' ', ' ', ' ', ' ', '|');
-
-                            lines[5] += string.Format("{0}{1}{2}{3}{4}{5}{6}{7}{8}{9}{10}   ", '|', (char)MonJeu[j].famille, ' ', ' ', ' ', (char)MonJeu[j].valeur, ' ', ' ', ' ', (char)MonJeu[j].famille, '|');
-
-                            lines[6] += string.Format("{0}{1}{2}{3}{4}{5}{6}{7}{8}{9}{10}   ", '|', ' ', ' ', ' ', ' ', (char)MonJeu[j].valeur, ' ', ' ', ' ', ' ', '|');
-
-                            lines[7] += string.Format("{0}{1}{2}{3}{4}{5}{6}{7}{8}{9}{10}   ",
-                          '|', (char)MonJeu[j].famille, ' ', ' ', ' ', ' ', ' ', ' ', ' ', (char)MonJeu[j].famille, '|');
-
-                            lines[8] += string.Format("{0}{1}{2}{3}{4}{5}{6}{7}{8}{9}{10}   ", '|', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '|');
-
-                            lines[9] += string.Format("{0}{1}{2}{3}{4}{5}{6}{7}{8}{9}{10}   ", '|', (char)MonJeu[j].famille, ' ', (char)MonJeu[j].famille, ' ', (char)MonJeu[j].famille, ' ', (char)MonJeu[j].famille, ' ', (char)MonJeu[j].famille, '|');
-                            lines[10] += string.Format("{0}{1}{2}{3}{4}{5}{6}{7}{8}{9}{10}   ", '*', '-', '-', '-', '-', '-', '-', '-', '-', '-', '*');
-                            lines[11] += string.Format("{0}{1}{2}{3}{4}{5}{6}{7}{8}{9}{10}   ", ' ', ' ', ' ', ' ', ' ', c, ' ', ' ', ' ', ' ', ' ');
-                            c++;
                         }
 
                         using (StreamWriter f = new StreamWriter("scores.txt", true))
                         {
                             f.WriteLine(Encrypt(nom + " _ " + Cherche_combinaison(ref MonJeu).ToString()));
-
-                            for (int h = 0; h < 12; h++)
-                            {
-                                f.WriteLine(Encrypt(lines[h]));
-                            }
+                            f.WriteLine(Encrypt(string.Join(";", card)));
                         }
                         Console.WriteLine("Score enregistre!");
                         Console.ReadKey();
@@ -491,18 +471,38 @@ namespace Poker
                         foreach (string line in lines)
                         {
                             string decrypted = Decrypt(line);
-                            for (int i = 0; i < decrypted.Length; i++)
-                            { 
-                                char c = decrypted[i];
-                                if (c == '♥' || c == '♦')
-                                    SetConsoleTextAttribute(hConsole, 252);
-                                else if (c== '♣' || c== '♠')
-                                    SetConsoleTextAttribute(hConsole, 240);
-                                else
-                                    SetConsoleTextAttribute(hConsole, 015); 
-                                Console.Write(c);
+                            if (decrypted.Contains(","))
+                            {
+                                string[] parts = decrypted.Split(';');
+                                for (int i = 0; i < 5; i++)
+                                {
+
+                                    string[] cardData = parts[i].Split(',');
+
+                                    MonJeu[i].valeur = char.Parse(cardData[1]);
+
+                                    if (cardData[0] == "3")
+                                        MonJeu[i].famille = '\u2665';
+                                    if (cardData[0] == "4")
+                                        MonJeu[i].famille = '\u2666';
+                                    if (cardData[0] == "5")
+                                        MonJeu[i].famille = '\u2663';
+                                    if (cardData[0] == "6")
+                                        MonJeu[i].famille = '\u2660';
+
+                                    Console.WriteLine();//new line after each line 
+                                    Console.WriteLine();//new line after each line 
+                                    Console.WriteLine();//new line after each line   
+                                    Console.WriteLine();//new line after each line 
+                                    Console.WriteLine();//new line after each line
+                                }
+                                affichageCarte(ref MonJeu[0]);
+
                             }
-                            Console.WriteLine();//new line after each line 
+                            else
+                            {
+                                Console.WriteLine(decrypted);
+                            }
 
                         }
                         Console.WriteLine("\n APPuyez sur une touche ");
@@ -520,6 +520,7 @@ namespace Poker
                     break;
 
             }
+
             Console.Clear();
             Console.ReadKey();
         }
