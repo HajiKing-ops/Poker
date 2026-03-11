@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Utilisateur\\Desktop\\Nouveau dossier (2)\\Poker\\Poker\\",
+  "WorkspaceRootPath": "C:\\Users\\r.salamzada\\Desktop\\Nouveau dossier (6)\\Poker\\Poker\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C41E3206-52E6-408E-9EF0-09CAC959CF58}|Poker\\Poker.csproj|c:\\users\\utilisateur\\desktop\\nouveau dossier (2)\\poker\\poker\\poker\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C41E3206-52E6-408E-9EF0-09CAC959CF58}|Poker\\Poker.csproj|c:\\users\\r.salamzada\\desktop\\nouveau dossier (6)\\poker\\poker\\poker\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C41E3206-52E6-408E-9EF0-09CAC959CF58}|Poker\\Poker.csproj|solutionrelative:poker\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -20,11 +20,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Utilisateur\\Desktop\\Nouveau dossier (2)\\Poker\\Poker\\Poker\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\r.salamzada\\Desktop\\Nouveau dossier (6)\\Poker\\Poker\\Poker\\Program.cs",
               "RelativeDocumentMoniker": "Poker\\Program.cs",
-              "ToolTip": "C:\\Users\\Utilisateur\\Desktop\\Nouveau dossier (2)\\Poker\\Poker\\Poker\\Program.cs",
+              "ToolTip": "C:\\Users\\r.salamzada\\Desktop\\Nouveau dossier (6)\\Poker\\Poker\\Poker\\Program.cs",
               "RelativeToolTip": "Poker\\Program.cs",
-              "ViewState": "AgIAAKIAAAAAAAAAAAAAALQAAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAANcBAAAAAAAAAAAAAOABAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-06T11:32:00.479Z",
               "EditorCaption": ""
